@@ -1,0 +1,12 @@
+<input
+  [(ngModel)]="inputValue"
+  placeholder="Enter 'stop' to stop"
+  class="border p-2 m-2"
+/>
+<button
+  (click)="stop()"
+  class="bg-blue-500 text-white p-2 m-2 disabled:opacity-50"
+  [disabled]="inputValue !== 'stop'"
+>
+  Stop
+</button>

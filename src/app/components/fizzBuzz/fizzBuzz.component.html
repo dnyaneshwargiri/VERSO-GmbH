@@ -1,0 +1,7 @@
+<app-input-box></app-input-box>
+
+@for (value of values; track value){
+<div [ngClass]="{ 'bg-gray-200': value % 2 === 1 }">
+  {{ value }}
+</div>
+}
