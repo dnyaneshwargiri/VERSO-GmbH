@@ -1,12 +1,16 @@
-<input
-  [(ngModel)]="inputValue"
-  placeholder="Enter 'stop' to stop"
-  class="border p-2 m-2"
-/>
-<button
-  (click)="stop()"
-  class="bg-blue-500 text-white p-2 m-2 disabled:opacity-50"
-  [disabled]="inputValue !== 'stop'"
->
-  Stop
-</button>
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="flex items-center space-x-4 p-6 bg-white shadow-lg rounded-md">
+    <input
+      [(ngModel)]="inputValue"
+      placeholder="Enter 'stop' to stop"
+      class="border border-gray-300 rounded-sm p-2 w-full max-w-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+    />
+    <button
+      (click)="stop()"
+      class="bg-orange-200 hover:bg-orange-300 text-black font-medium py-2 px-4 rounded-sm shadow-md disabled:opacity-50 transition duration-300 ease-in-out"
+      [disabled]="inputValue !== 'stop'"
+    >
+      Stop
+    </button>
+  </div>
+</div>

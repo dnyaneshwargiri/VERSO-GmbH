@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, computed } from "@angular/core";
 import { FizzBuzzService } from "../../services/fizzBuzz.service";
 import { SharedService } from "../../services/shared.service";
 import { InputBoxComponent } from "../widgets/inputBox/inputBox.component";
@@ -14,6 +14,8 @@ export class FizzBuzzComponent implements OnInit, OnDestroy {
   values: string[] = [];
   private stopSignal = this.sharedService.stopSignal;
   private intervalId?: any;
+  private readonly maxItemsPerColumn = 10;
+  columns: string[][] = [];
 
   constructor(
     private fizzBuzzService: FizzBuzzService,
@@ -21,6 +23,10 @@ export class FizzBuzzComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.startFizzBuzz();
+  }
+
+  startFizzBuzz() {
     this.intervalId = setInterval(() => {
       if (this.stopSignal()) {
         this.ngOnDestroy();
