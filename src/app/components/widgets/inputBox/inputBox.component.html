@@ -9,14 +9,13 @@
       placeholder="Enter 'stop' to stop"
       class="border p-2 w-full max-w-xs"
     />
-    <div
-      *ngIf="inputValue?.invalid && (inputValue?.dirty || inputValue?.touched)"
-      class="text-red-500"
-    >
-      <div *ngIf="inputValue?.errors?.['invalidStop']">
-        Input must be exactly 'stop'.
-      </div>
+
+    @if (inputValue?.invalid && (inputValue?.dirty || inputValue?.touched)){ @if
+    (inputValue?.errors?.['invalidStop']) {
+    <div class="text-red-500">
+      <div>Input must be exactly 'stop'.</div>
     </div>
+    } }
   </div>
   <button
     type="submit"

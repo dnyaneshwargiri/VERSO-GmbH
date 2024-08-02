@@ -30,6 +30,7 @@ export class FizzBuzzComponent implements OnInit, OnDestroy {
       },
       complete: () => {
         console.log("Completed");
+        this.ngOnDestroy();
       },
     });
     this.subscriptions.push(fizzBuzzSubscription);
