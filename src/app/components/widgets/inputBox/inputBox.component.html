@@ -1,16 +1,28 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-  <div class="flex items-center space-x-4 p-6 bg-white shadow-lg rounded-md">
+<form
+  [formGroup]="stopFizBuzzForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col items-center"
+>
+  <div class="mb-4">
     <input
-      [(ngModel)]="inputValue"
+      formControlName="inputValue"
       placeholder="Enter 'stop' to stop"
-      class="border border-gray-300 rounded-sm p-2 w-full max-w-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+      class="border p-2 w-full max-w-xs"
     />
-    <button
-      (click)="stop()"
-      class="bg-orange-200 hover:bg-orange-300 text-black font-medium py-2 px-4 rounded-sm shadow-md disabled:opacity-50 transition duration-300 ease-in-out"
-      [disabled]="inputValue !== 'stop'"
+    <div
+      *ngIf="inputValue?.invalid && (inputValue?.dirty || inputValue?.touched)"
+      class="text-red-500"
     >
-      Stop
-    </button>
+      <div *ngIf="inputValue?.errors?.['invalidStop']">
+        Input must be exactly 'stop'.
+      </div>
+    </div>
   </div>
-</div>
+  <button
+    type="submit"
+    [disabled]="stopFizBuzzForm.invalid"
+    class="bg-orange-500 text-white p-2 disabled:opacity-50"
+  >
+    Stop
+  </button>
+</form>

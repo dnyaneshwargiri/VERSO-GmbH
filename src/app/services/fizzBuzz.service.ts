@@ -1,21 +1,27 @@
-import { Injectable } from "@angular/core";
-import { Observable, interval } from "rxjs";
-import { map, takeWhile } from "rxjs/operators";
+import { inject, Injectable, Injector } from "@angular/core";
+import { Observable, of } from "rxjs";
+import { concatMap, delay, takeUntil } from "rxjs/operators";
+import { SharedService } from "./shared.service";
+import { toObservable } from "@angular/core/rxjs-interop";
 
 @Injectable({
   providedIn: "root",
 })
 export class FizzBuzzService {
+  constructor(private sharedService: SharedService) {}
+  private injector = inject(Injector);
+
   getFizzBuzz(): Observable<string> {
-    return interval(500).pipe(
-      map((i) => i + 1),
-      takeWhile((i) => i <= 100),
-      map((i) => {
-        if (i % 3 === 0 && i % 5 === 0) return "FizzBuzz";
-        if (i % 3 === 0) return "Fizz";
-        if (i % 5 === 0) return "Buzz";
-        return i.toString();
-      })
+    const values = Array.from({ length: 100 }, (_, i) =>
+      this.getFizzBuzzValue(i + 1)
     );
+    return of(...values).pipe(concatMap((value) => of(value).pipe(delay(500))));
+  }
+
+  private getFizzBuzzValue(num: number): string {
+    if (num % 3 === 0 && num % 5 === 0) return "FizzBuzz";
+    if (num % 3 === 0) return "Fizz";
+    if (num % 5 === 0) return "Buzz";
+    return num.toString();
   }
 }

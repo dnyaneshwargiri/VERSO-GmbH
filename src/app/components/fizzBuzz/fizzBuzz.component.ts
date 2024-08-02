@@ -1,9 +1,11 @@
-import { Component, OnInit, OnDestroy, computed } from "@angular/core";
+import { Component, OnInit, OnDestroy, computed, inject } from "@angular/core";
 import { FizzBuzzService } from "../../services/fizzBuzz.service";
-import { SharedService } from "../../services/shared.service";
 import { InputBoxComponent } from "../widgets/inputBox/inputBox.component";
 import { CommonModule } from "@angular/common";
+import { AutoUnsubscribe } from "../../decorators/autoUnsubscribe.decorator";
+import { Subscription } from "rxjs";
 
+@AutoUnsubscribe()
 @Component({
   selector: "app-fizz-buzz",
   templateUrl: "./fizzBuzz.component.html",
@@ -12,36 +14,26 @@ import { CommonModule } from "@angular/common";
 })
 export class FizzBuzzComponent implements OnInit, OnDestroy {
   values: string[] = [];
-  private stopSignal = this.sharedService.stopSignal;
-  private intervalId?: any;
   private readonly maxItemsPerColumn = 10;
   columns: string[][] = [];
-
-  constructor(
-    private fizzBuzzService: FizzBuzzService,
-    private sharedService: SharedService
-  ) {}
+  private subscriptions: Subscription[] = [];
+  private fizzBuzzService = inject(FizzBuzzService);
 
   ngOnInit() {
     this.startFizzBuzz();
   }
 
   startFizzBuzz() {
-    this.intervalId = setInterval(() => {
-      if (this.stopSignal()) {
-        this.ngOnDestroy();
-        return;
-      }
-
-      this.fizzBuzzService.getFizzBuzz().subscribe((value) => {
+    const fizzBuzzSubscription = this.fizzBuzzService.getFizzBuzz().subscribe({
+      next: (value) => {
         this.values.push(value);
-      });
-    }, 500);
+      },
+      complete: () => {
+        console.log("Completed");
+      },
+    });
+    this.subscriptions.push(fizzBuzzSubscription);
   }
 
-  ngOnDestroy() {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
-  }
+  ngOnDestroy() {}
 }
