@@ -40,10 +40,6 @@ export class SequenceControlComponent implements OnInit {
     }
   }
 
-  onReset() {
-    this.sharedService.resetStop();
-  }
-
   get inputValue() {
     return this.stopFizBuzzForm.get("inputValue");
   }
