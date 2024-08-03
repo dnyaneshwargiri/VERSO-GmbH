@@ -31,9 +31,7 @@ ii] prints 'Buzz' if number % 5 === 0
 ii] prints 'Fizz Buzz' if (number % 3 === 0 && number % 5 === 0 )
 ```
 
-
 https://github.com/user-attachments/assets/994b27a4-17ce-4cdb-87c0-3052e939b26e
-
 
 ### Built With
 
@@ -80,8 +78,6 @@ Below are instructions on setting up your project locally.
    pnpm dev /* dev mode */
    ```
 
-   Application uses `pnpm workspaces`
-
 ## Test and Lint
 
 Run test cases
@@ -121,3 +117,5 @@ pnpm lint
 Please be informed commits are intentionly not squashed.
 
 ## Open issue
+
+No content
