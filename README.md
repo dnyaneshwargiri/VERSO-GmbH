@@ -31,6 +31,10 @@ ii] prints 'Buzz' if number % 5 === 0
 ii] prints 'Fizz Buzz' if (number % 3 === 0 && number % 5 === 0 )
 ```
 
+
+https://github.com/user-attachments/assets/994b27a4-17ce-4cdb-87c0-3052e939b26e
+
+
 ### Built With
 
 Below are frameworks/ libraries used to bootstrap this project.
