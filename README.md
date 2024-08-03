@@ -118,4 +118,4 @@ Please be informed commits are intentionly not squashed.
 
 ## Open issue
 
-No content
+No issues listed
