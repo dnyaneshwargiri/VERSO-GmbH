@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { concatMap, delay, filter, takeUntil, tap } from "rxjs/operators";
+import { concatMap, delay, filter, takeUntil } from "rxjs/operators";
 import { SharedService } from "../shared/services/shared.service";
 import { Sequence } from "../shared/types/fizzBuzz";
 

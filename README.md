@@ -48,6 +48,7 @@ Below are instructions on setting up your project locally.
 - Anular 17.2.0
 - PNPM 8.15.4
 - Typescript": ^5.5.2
+- Docker >25.0.3
 
 ### Installation
 
@@ -62,14 +63,14 @@ Below are instructions on setting up your project locally.
 3. Compile Fizz-Buzz app
 
    ```sh
-   pnpm compile:production
+   pnpm build:production
    ```
 
 4. Run Fizz-Buzz app
 
    ```sh
    pnpm start /* production */
-   pnpm svc:dev /* dev mode */
+   pnpm dev /* dev mode */
    ```
 
    Application uses `pnpm workspaces`
@@ -109,4 +110,3 @@ pnpm lint
 Please be informed commits are intentionly not squashed.
 
 ## Open issue
-

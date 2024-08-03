@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import {
   FormBuilder,
   FormControl,
@@ -17,7 +17,7 @@ import { CommonModule } from "@angular/common";
   imports: [FormsModule, ReactiveFormsModule, CommonModule],
   standalone: true,
 })
-export class SequenceControlComponent implements OnInit {
+export class SequenceControlComponent {
   stopFizBuzzForm: FormGroup;
   private sharedService = inject(SharedService);
 
@@ -26,8 +26,6 @@ export class SequenceControlComponent implements OnInit {
       inputValue: ["", [Validators.required, this.stopValidator]],
     });
   }
-
-  ngOnInit(): void {}
 
   stopValidator(control: FormControl) {
     const value = control.value.trim();
