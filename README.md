@@ -70,7 +70,7 @@ Below are instructions on setting up your project locally.
 3. Compile Fizz-Buzz app
 
    ```sh
-   pnpm build:production
+   pnpm build:prod
    ```
 
 4. Run Fizz-Buzz app
@@ -100,7 +100,7 @@ pnpm lint
 
 1. Build application for production
    ```sh
-     pnpm build:production
+     pnpm build:prod
    ```
 2. Build Docker image
    ```sh

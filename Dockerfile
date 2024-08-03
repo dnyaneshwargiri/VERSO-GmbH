@@ -11,4 +11,4 @@ ENV PORT=$PORT
 
 EXPOSE $PORT
 
-CMD ["sh", "-c", "http-server dist -p $PORT --cors"]
+CMD ["sh", "-c", "http-server dist -p $PORT --cors -o"]
