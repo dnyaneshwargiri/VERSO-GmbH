@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply font-sans text-base;
+  font-family: "IBM-Plex-Sans", sans-serif;
+  color: #003837;
 }
