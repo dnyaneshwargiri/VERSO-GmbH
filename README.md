@@ -24,9 +24,12 @@
 ## About The Project
 
 Fizz Buzz is a Simple Angular application which does below things.
+
+```sh
 i] prints 'Fizz' if number % 3 === 0
 ii] prints 'Buzz' if number % 5 === 0
 ii] prints 'Fizz Buzz' if (number % 3 === 0 && number % 5 === 0 )
+```
 
 ### Built With
 
@@ -34,7 +37,7 @@ Below are frameworks/ libraries used to bootstrap this project.
 
 - ![Angular](https://img.shields.io/badge/angular-%2320232a.svg?style=for-the-badge&logo=angular&logoColor=%2361DAFB)
 - ![Tailwind CSS.](https://img.shields.io/badge/tailwind-css-%2320232a.svg?style=for-the-badge&logo=tailwind-css&logoColor=%2361DAFB)
-- ![Jest.](https://img.shields.io/badge/jest-%2320232a.svg?style=for-the-badge&logo=jest&logoColor=%2361DAFB)
+- ![Testing Library.](https://img.shields.io/badge/testing-library%2320232a.svg?style=for-the-badge&logo=testing-library)
 - ![PNPM](https://img.shields.io/badge/pnpm-%232C8EBB.svg?style=for-the-badge&logo=pnpm&logoColor=white)
 - ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
@@ -100,11 +103,11 @@ pnpm lint
      chmod +x docker.build.sh
    ```
    ```sh
-    ./docker.build.sh production
+    ./docker.build.sh production 3000
    ```
 3. Run Docker image
    ```sh
-     docker run -p 9999:9999 -p 5173:5173 fiz-buzz-app
+     docker run -p 3000:3000 fiz-buzz-app
    ```
 
 Please be informed commits are intentionly not squashed.

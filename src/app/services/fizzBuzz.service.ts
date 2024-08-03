@@ -9,7 +9,7 @@ import { Sequence } from "../shared/types/fizzBuzz";
 })
 export class FizzBuzzService {
   constructor(private sharedService: SharedService) {}
-  MAX_NUMBER = 100;
+  readonly MAX_NUMBER = 100;
 
   getFizzBuzz(): Observable<string> {
     const sequence: Sequence = Array.from({ length: this.MAX_NUMBER }, (_, i) =>
@@ -21,11 +21,7 @@ export class FizzBuzzService {
     );
   }
 
-  // filter(
-  //   () => !this.sharedService.stopSignal().pipe(filter((start) => !start))
-  // )
-
-  private getFizzBuzzValue(input: number): string {
+  getFizzBuzzValue(input: number): string {
     if (input % 3 === 0 && input % 5 === 0) return "FizzBuzz";
     if (input % 3 === 0) return "Fizz";
     if (input % 5 === 0) return "Buzz";
