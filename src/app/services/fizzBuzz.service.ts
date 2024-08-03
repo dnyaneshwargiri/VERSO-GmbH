@@ -1,27 +1,34 @@
-import { inject, Injectable, Injector } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { concatMap, delay, takeUntil } from "rxjs/operators";
-import { SharedService } from "./shared.service";
-import { toObservable } from "@angular/core/rxjs-interop";
+import { concatMap, delay, filter, takeUntil, tap } from "rxjs/operators";
+import { SharedService } from "../shared/services/shared.service";
+import { Sequence } from "../shared/types/fizzBuzz";
 
 @Injectable({
   providedIn: "root",
 })
 export class FizzBuzzService {
   constructor(private sharedService: SharedService) {}
-  private injector = inject(Injector);
+  MAX_NUMBER = 100;
 
   getFizzBuzz(): Observable<string> {
-    const values = Array.from({ length: 100 }, (_, i) =>
+    const sequence: Sequence = Array.from({ length: this.MAX_NUMBER }, (_, i) =>
       this.getFizzBuzzValue(i + 1)
     );
-    return of(...values).pipe(concatMap((value) => of(value).pipe(delay(500))));
+    return of(...sequence).pipe(
+      concatMap((value) => of(value).pipe(delay(500))),
+      takeUntil(this.sharedService.stopSignal().pipe(filter((stop) => stop)))
+    );
   }
 
-  private getFizzBuzzValue(num: number): string {
-    if (num % 3 === 0 && num % 5 === 0) return "FizzBuzz";
-    if (num % 3 === 0) return "Fizz";
-    if (num % 5 === 0) return "Buzz";
-    return num.toString();
+  // filter(
+  //   () => !this.sharedService.stopSignal().pipe(filter((start) => !start))
+  // )
+
+  private getFizzBuzzValue(input: number): string {
+    if (input % 3 === 0 && input % 5 === 0) return "FizzBuzz";
+    if (input % 3 === 0) return "Fizz";
+    if (input % 5 === 0) return "Buzz";
+    return input.toString();
   }
 }

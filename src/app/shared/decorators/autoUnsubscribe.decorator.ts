@@ -12,7 +12,6 @@ export function AutoUnsubscribe() {
       }
       if (originalOnDestroy) {
         originalOnDestroy.apply(this);
-        console.log("dstryed");
       }
     };
   };

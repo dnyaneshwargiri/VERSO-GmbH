@@ -3,20 +3,20 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 import { DebugElement } from "@angular/core";
 
-import { FizzBuzzComponent } from "./fizzBuzz.component";
+import { SequenceControlComponent } from "./sequenceControls.component";
 
-describe("FizzBuzzComponent", () => {
-  let component: FizzBuzzComponent;
-  let fixture: ComponentFixture<FizzBuzzComponent>;
+describe("SequenceControlComponent", () => {
+  let component: SequenceControlComponent;
+  let fixture: ComponentFixture<SequenceControlComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FizzBuzzComponent],
+      declarations: [SequenceControlComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FizzBuzzComponent);
+    fixture = TestBed.createComponent(SequenceControlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

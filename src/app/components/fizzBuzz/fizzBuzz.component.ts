@@ -1,21 +1,20 @@
-import { Component, OnInit, OnDestroy, computed, inject } from "@angular/core";
+import { Component, OnInit, OnDestroy, inject } from "@angular/core";
 import { FizzBuzzService } from "../../services/fizzBuzz.service";
-import { InputBoxComponent } from "../widgets/inputBox/inputBox.component";
+import { SequenceControlComponent } from "../sequenceControls/sequenceControls.component";
 import { CommonModule } from "@angular/common";
-import { AutoUnsubscribe } from "../../decorators/autoUnsubscribe.decorator";
+import { AutoUnsubscribe } from "../../shared/decorators/autoUnsubscribe.decorator";
 import { Subscription } from "rxjs";
+import { Sequence } from "../../shared/types/fizzBuzz";
 
 @AutoUnsubscribe()
 @Component({
   selector: "app-fizz-buzz",
   templateUrl: "./fizzBuzz.component.html",
-  imports: [InputBoxComponent, CommonModule],
+  imports: [SequenceControlComponent, CommonModule],
   standalone: true,
 })
 export class FizzBuzzComponent implements OnInit, OnDestroy {
-  values: string[] = [];
-  private readonly maxItemsPerColumn = 10;
-  columns: string[][] = [];
+  values: Sequence = [];
   private subscriptions: Subscription[] = [];
   private fizzBuzzService = inject(FizzBuzzService);
 

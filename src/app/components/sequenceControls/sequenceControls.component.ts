@@ -8,16 +8,16 @@ import {
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 
-import { SharedService } from "../../../services/shared.service";
+import { SharedService } from "../../shared/services/shared.service";
 import { CommonModule } from "@angular/common";
 
 @Component({
-  selector: "app-input-box",
-  templateUrl: "./inputBox.component.html",
+  selector: "app-sequence-controls",
+  templateUrl: "./sequenceControls.component.html",
   imports: [FormsModule, ReactiveFormsModule, CommonModule],
   standalone: true,
 })
-export class InputBoxComponent implements OnInit {
+export class SequenceControlComponent implements OnInit {
   stopFizBuzzForm: FormGroup;
   private sharedService = inject(SharedService);
 
@@ -38,6 +38,10 @@ export class InputBoxComponent implements OnInit {
     if (this.stopFizBuzzForm.valid) {
       this.sharedService.triggerStop();
     }
+  }
+
+  onReset() {
+    this.sharedService.resetStop();
   }
 
   get inputValue() {
