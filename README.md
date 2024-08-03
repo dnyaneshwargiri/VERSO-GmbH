@@ -109,7 +109,7 @@ pnpm lint
    ```sh
      docker run -p 3000:3000 fizz-buzz-app
    ```
-3. Launch in Browser
+4. Launch in Browser
    ```sh
      localhost:3000
    ```
