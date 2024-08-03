@@ -107,7 +107,11 @@ pnpm lint
    ```
 3. Run Docker image
    ```sh
-     docker run -p 3000:3000 fiz-buzz-app
+     docker run -p 3000:3000 fizz-buzz-app
+   ```
+3. Launch in Browser
+   ```sh
+     localhost:3000
    ```
 
 Please be informed commits are intentionly not squashed.
