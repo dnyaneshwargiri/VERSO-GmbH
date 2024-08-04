@@ -9,10 +9,10 @@ import { Sequence } from "../shared/types/fizzBuzz";
 })
 export class FizzBuzzService {
   constructor(private sharedService: SharedService) {}
-  readonly MAX_NUMBER = 100;
+  readonly MAX_ITERATION = 100;
 
   getFizzBuzz(): Observable<string> {
-    const sequence: Sequence = Array.from({ length: this.MAX_NUMBER }, (_, i) =>
+    const sequence: Sequence = Array.from({ length: this.MAX_ITERATION }, (_, i) =>
       this.getFizzBuzzValue(i + 1)
     );
     return of(...sequence).pipe(
