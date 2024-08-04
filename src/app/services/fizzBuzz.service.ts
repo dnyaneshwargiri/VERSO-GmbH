@@ -3,17 +3,19 @@ import { Observable, of } from "rxjs";
 import { concatMap, delay, filter, takeUntil } from "rxjs/operators";
 import { SharedService } from "../shared/services/shared.service";
 import { Sequence } from "../shared/types/fizzBuzz";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class FizzBuzzService {
   constructor(private sharedService: SharedService) {}
-  readonly MAX_ITERATION = 100;
+  readonly MAX_ITERATION = environment.MAX_ITERATION;
 
   getFizzBuzz(): Observable<string> {
-    const sequence: Sequence = Array.from({ length: this.MAX_ITERATION }, (_, i) =>
-      this.getFizzBuzzValue(i + 1)
+    const sequence: Sequence = Array.from(
+      { length: this.MAX_ITERATION },
+      (_, i) => this.getFizzBuzzValue(i + 1)
     );
     return of(...sequence).pipe(
       concatMap((value) => of(value).pipe(delay(500))),
